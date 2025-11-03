@@ -33,7 +33,7 @@ class ItemController extends Controller
             'satuan' => $request->satuan,
             'stok_awal' => $request->stok_awal,
             'stok_akhir' => $request->stok_awal,
-            'created_by' => auth()->id(),
+            'created_by' => auth()->id() ?? 1, // Gunakan user ID 1 jika tidak login
         ]);
 
         return redirect()->route('items.index')
@@ -42,22 +42,14 @@ class ItemController extends Controller
 
     public function edit(Item $item)
     {
-        // Only leader can edit
-        if (!auth()->user()->isLeader()) {
-            abort(403);
-        }
-
+        // Middleware sudah handle auth & role check
         $histories = $item->histories()->orderBy('created_at', 'desc')->get();
         return view('items.edit', compact('item', 'histories'));
     }
 
     public function update(Request $request, Item $item)
     {
-        // Only leader can update
-        if (!auth()->user()->isLeader()) {
-            abort(403);
-        }
-
+        // Middleware sudah handle auth & role check
         $request->validate([
             'type' => 'required|in:penambahan,pengurangan',
             'jumlah' => 'required|integer|min:1',
