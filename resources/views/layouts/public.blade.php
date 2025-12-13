@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Inventory System</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" href="{{ asset('img/logo-elaia.jpg') }}" type="image/jpeg">
 </head>
 <body>
     <nav class="bg-white border-b p-4">
