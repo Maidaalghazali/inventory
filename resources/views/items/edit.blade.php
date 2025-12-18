@@ -40,6 +40,10 @@
                             <p class="text-sm text-gray-600">Stok Akhir</p>
                             <p class="font-bold text-blue-600 text-lg">{{ $item->stok_akhir }}</p>
                         </div>
+                        <div>
+                            <p class="text-sm text-gray-600">Stok Minimal</p>
+                            <p class="font-bold text-blue-600 text-lg">{{ $item->stok_minimum }}</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -171,7 +175,7 @@
                                         <td class="px-6 py-4 text-sm text-gray-900">{{ $history->keterangan ?? '-' }}
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                                            {{ $history->creator->name }}</td>
+                                            {{ $history->user->name }}</td>
                                     </tr>
                                 @empty
                                     <tr>
